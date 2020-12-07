@@ -1,0 +1,172 @@
+
+<!doctype html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Proposal</title>
+		 <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+
+    
+
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Roboto+Mono:300,400|Roboto:300,400,500,700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="./css/main.css" />
+
+		<!-- <script src="./js/jquery.js"></script> -->
+		<script src="./js/jquery-old.js"></script>
+<link href="http://vjs.zencdn.net/4.11/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/4.11/video.js"></script>
+        		<!-- <script src="./js/bootstrap.js"></script> -->
+	</head>
+	<body>
+		<style>
+		.ratio-bar {
+		    padding-top: 60px!important;
+		    background-color: #5a686c;
+		    color: #f0f0f0;
+		}
+			@media (min-width: 1330px){
+				.container {
+				    width: auto!important;
+				}
+			}
+		</style>
+		<header>
+		    <! -- nav start -->
+					<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+			    <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				</button>
+<!-- 				<a class="navbar-brand hidden-md" href=""> -->\
+				<a class="navbar-brand hidden-md" href="/">
+				    Project Demo
+				</a>
+			    </div>
+                    		<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav ">
+
+					</ul>
+           			</div>
+			</nav>
+
+		    <!-- nav end -->
+			<div class="ratio-bar">
+				<div class="container">
+				    
+				</div>
+			    </div>
+		</header>
+		<section class="container content" id="content-area">
+			
+			<br>
+			
+			<div class="row" >
+                <div class="col-md-2" id="left">
+                    <div class="panel panel-default shadowed">
+                        <div class="panel-heading">
+                            Menu
+                        </div>
+                        <div class="panel-body" id="left-body">
+                            
+                            
+                            
+                            Start the video playing and then activate the sensor by clicking "Simulate Movement"
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10" id="right" class="royce">
+                    <div class="panel panel-default shadowed">
+                        <div class="panel-heading"><h1 class="panel-title title"><span id="pageTitle"></span></h1>
+                        </div>
+                        <div class="panel-body">
+                 
+
+ 
+<video id="my_video" class="video-js vjs-default-skin" controls preload="auto" autoplay="true" 
+       width="511" height="382" poster="/test-video/testvid_01.jpg" data-setup="{}">  
+    <source src="" type="video/mp4" />
+
+</video>
+ 
+<button onclick="doActivate()">Simulate Movement</button>
+
+
+<div class="wrap" style="display: none;">
+  <input rel="01" type="button" value="play 1">
+  <input rel="02" type="button" value="play 2">
+</div>
+
+
+<script>
+	
+
+	jQuery("input[type=button]").click(function() {
+    var $target         = "testvid_"+jQuery(this).attr("rel");
+    var $content_path   = "./test-video/";
+    var $vid_obj        = _V_("my_video");
+ 
+    // hide the currently loaded poster
+    jQuery("img.vjs-poster").hide();
+ 
+    $vid_obj.ready(function() {
+      // hide the video UI
+      jQuery("#my_video_html5_api").hide();
+      // Pause the video being played
+      $vid_obj.pause();
+ 
+      // Assign the new set of videos to the corresponding nodes in the player
+      jQuery("video:nth-child(1)").attr("src",$content_path+$target+".mp4");
+      jQuery("video:nth-child(1)").attr("src",$content_path+$target+".mp4");
+      jQuery("video:nth-child(1)").attr("src",$content_path+$target+".mp4");
+ 
+      // replace the source image of the poster
+      jQuery(".vjs-poster").css("background-image","url("+$content_path+$target+".jpg)").show();
+      // reset the UI states
+      jQuery(".vjs-big-play-button").show();
+      jQuery("#my_video").removeClass("vjs-playing").addClass("vjs-paused");
+ 
+      // Load the new video sources in the player
+      $vid_obj.load();
+      jQuery("#my_video_html5_api").show();
+    });
+});
+ 
+jQuery("input[rel='01']").click();
+
+
+function doActivate(){
+	jQuery("#right > div > div.panel-body > div.wrap > input[type=button]:nth-child(2)").click();
+	setTimeout(continueExecution, 10000)
+	
+}
+function continueExecution(){
+	jQuery("#right > div > div.panel-body > div.wrap > input[type=button]:nth-child(1)").click();
+}
+
+</script>
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		
+		<footer>
+			
+		</footer>
+	
+	</body>
+</html>
